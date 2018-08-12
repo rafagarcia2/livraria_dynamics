@@ -2,6 +2,7 @@
 .metadata
 bin/
 tmp/
+build/
 *.tmp
 *.bak
 *.swp
@@ -31,7 +32,6 @@ local.properties
 
 # PDT-specific (PHP Development Tools)
 .buildpath
-.build/
 
 # sbteclipse plugin
 .target
