@@ -27,6 +27,10 @@ public class LivroBean implements Serializable {
 	public Livro getLivro() {
 		return livro;
 	}
+	
+	public void setLivro(Livro livro){
+		this.livro = livro;
+	}
 
 	public void gravar() {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
@@ -36,9 +40,29 @@ public class LivroBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um Autor."));
 		}
 
-		new DAO<Livro>(Livro.class).adiciona(this.livro);
+		if (this.livro.getId() == null) {
+			new DAO<Livro>(Livro.class).adiciona(this.livro);
+		} else {
+			new DAO<Livro>(Livro.class).atualiza(this.livro);
+		}
 		
 		this.livro = new Livro();
+	}
+	
+	public void editar(Livro livro) {
+	    System.out.println("Editando livro " + livro.getTitulo());
+	    this.livro = livro;
+	}
+	
+	public void remover(Livro livro) {
+	    System.out.println("Removendo livro " + livro.getTitulo());
+	    new DAO<Livro>(Livro.class).remove(livro);
+	    // this.livros.remove(livro); // removendo da lista
+	}
+	
+	public void removerAutorDoLivro(Autor autor) {
+		System.out.println("Nem chegou aqui!");
+		this.livro.removeAutor(autor);
 	}
 	
 	public String form() {
