@@ -41,6 +41,12 @@ public class LivroBean implements Serializable {
 		this.livro = new Livro();
 	}
 	
+	public String form() {
+		return "autor?faces-redirect=true";
+	}
+	
+	
+	
 	public List<Autor> getAutores() {
 		return new DAO<Autor>(Autor.class).listaTodos();
 	}
