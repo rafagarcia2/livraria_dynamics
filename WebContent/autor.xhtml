@@ -36,7 +36,7 @@
 			</h:form>
 			
 			<h:form id="formTabelaAutores">
-				<h:dataTable id="tabelaAutores" value="#{autorBean.autores}" var="autor" >
+				<h:dataTable id="tabelaAutores" class="table" value="#{autorBean.autores}" var="autor" >
 					  <h:column>
 					    <f:facet name="header">Nome</f:facet>
 					    <h:outputText value="#{autor.nome}" />
