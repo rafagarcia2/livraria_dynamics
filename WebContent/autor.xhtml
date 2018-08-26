@@ -11,50 +11,64 @@
 		</ui:define>
 	
 		<ui:define name="conteudo">
-			<h:form>
-				<fieldset>
-					<legend>Dados do Autor</legend>
-					<h:panelGrid columns="3">
-						<h:outputLabel value="Nome:" for="nome" />
-						<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true" 
-							requiredMessage="Nome obrigatório." validatorMessage="Tamanho mínimo: 5.">
-							<f:validateLength minimum="5"/>
-						</h:inputText>
-						<h:message for="nome" id="message"/>
-						
-						<h:outputLabel value="E-mail:" for="email" />
-						<h:inputText id="email" value="#{autorBean.autor.email}" required="true">
-							<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
-						</h:inputText>
-						<h:message for="email" id="messageEmail"/>
-
-						<h:commandButton value="Gravar" action="#{autorBean.gravar}" >
-							<f:ajax execute="nome" render="@form"/>
-						</h:commandButton>
-					</h:panelGrid>
-				</fieldset>
-			</h:form>
-			
-			<h:form id="formTabelaAutores">
-				<h:dataTable id="tabelaAutores" class="table" value="#{autorBean.autores}" var="autor" >
-					  <h:column>
-					    <f:facet name="header">Nome</f:facet>
-					    <h:outputText value="#{autor.nome}" />
-					  </h:column>
-					  
-					  <h:column>
-				        <f:facet name="header">Alterar</f:facet>
-				        <h:commandLink value="altera">
-				        	<f:setPropertyActionListener target="#{autorBean.autor}" value="#{autor}" />
-				        </h:commandLink>
-				      </h:column>
-					  
-					  <h:column>
-				        <f:facet name="header">Remover</f:facet>
-				        <h:commandLink value="remove" action="#{autorBean.remover(autor)}"/>
-				      </h:column>
-				</h:dataTable>
-			</h:form>
+			<div class="container">
+				<h:form>
+						<h1>Dados do Autor</h1>
+						<div class="form-control">
+							<div class="col-md-6">
+								<div class="form-group">
+									<h:outputLabel value="Nome:" for="nome" />
+									<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true" styleClass="form-control"
+										requiredMessage="Nome obrigatório." validatorMessage="Tamanho mínimo: 5.">
+										<f:validateLength minimum="5"/>
+									</h:inputText>
+									<h:message for="nome" id="message"/>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group">
+									<h:outputLabel value="E-mail:" for="email" />
+									<h:inputText id="email" value="#{autorBean.autor.email}" required="true" styleClass="form-control">
+										<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
+									</h:inputText>
+									<h:message for="email" id="messageEmail"/>
+								</div>
+							</div>
+	
+							<h:commandButton value="Gravar" action="#{autorBean.gravar}" styleClass="btn btn-success">
+								<f:ajax execute="nome" render="@form"/>
+							</h:commandButton>
+						</div>
+				</h:form>
+				
+				<br />
+				
+				<h2>Autores Cadastrados</h2>
+				<h:form id="formTabelaAutores">
+					<h:dataTable id="tabelaAutores" class="table" value="#{autorBean.autores}" var="autor" >
+						  <h:column>
+						    <f:facet name="header">Nome</f:facet>
+						    <h:outputText value="#{autor.nome}" />
+						  </h:column>
+						  
+						  <h:column>
+					        <f:facet name="header">Alterar</f:facet>
+					        <h:commandLink>
+					        	<f:setPropertyActionListener target="#{autorBean.autor}" value="#{autor}" />
+					        	<i class="fa fa-edit"></i>
+					        </h:commandLink>
+					      </h:column>
+						  
+						  <h:column>
+					        <f:facet name="header">Remover</f:facet>
+					        <h:commandLink action="#{autorBean.remover(autor)}">
+					        	<i class="fa fa-trash-alt"></i>
+						    </h:commandLink>
+					      </h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
 		</ui:define>
 		
 		<ui:define name="rodape">
