@@ -41,9 +41,18 @@
 		            <li class="nav-item">
 		              <a class="nav-link" href="/livraria/autor.xhtml">Autores</a>
 		            </li>
-		            <li class="nav-item">
-		              <a class="nav-link" href="/livraria/login.xhtml">Login</a>
-		            </li>
+		            
+		            <h:form rendered="#{usuarioLogado != null}">
+		            	<li class="nav-item">
+			            	<h:commandLink value="Logout" action="#{loginBean.deslogar}" styleClass="nav-link" />
+			            </li>
+			        </h:form>
+	
+					<h:form rendered="#{usuarioLogado == null}">
+			            <li class="nav-item">
+			            	<a class="nav-link" href="/livraria/login.xhtml">Login</a>
+			            </li>
+			        </h:form>
 		          </ul>
 		        </div>
 		      </div>
