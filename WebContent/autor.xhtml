@@ -13,33 +13,31 @@
 		<ui:define name="conteudo">
 			<div class="container">
 				<h:form>
+					<div class="col-md-9">
 						<h1>Dados do Autor</h1>
 						<div class="form-control">
-							<div class="col-md-6">
-								<div class="form-group">
-									<h:outputLabel value="Nome:" for="nome" />
-									<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true" styleClass="form-control"
-										requiredMessage="Nome obrigatório." validatorMessage="Tamanho mínimo: 5.">
-										<f:validateLength minimum="5"/>
-									</h:inputText>
-									<h:message for="nome" id="message"/>
-								</div>
+							<div class="form-group">
+								<h:outputLabel value="Nome:" for="nome" />
+								<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true" styleClass="form-control"
+									requiredMessage="Nome obrigatório." validatorMessage="Tamanho mínimo: 5.">
+									<f:validateLength minimum="5"/>
+								</h:inputText>
+								<h:message for="nome" id="message"/>
 							</div>
-							
-							<div class="col-md-6">
-								<div class="form-group">
-									<h:outputLabel value="E-mail:" for="email" />
-									<h:inputText id="email" value="#{autorBean.autor.email}" required="true" styleClass="form-control">
-										<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
-									</h:inputText>
-									<h:message for="email" id="messageEmail"/>
-								</div>
+
+							<div class="form-group">
+								<h:outputLabel value="E-mail:" for="email" />
+								<h:inputText id="email" value="#{autorBean.autor.email}" required="true" styleClass="form-control">
+									<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
+								</h:inputText>
+								<h:message for="email" id="messageEmail"/>
 							</div>
-	
+
 							<h:commandButton value="Gravar" action="#{autorBean.gravar}" styleClass="btn btn-success">
 								<f:ajax execute="nome" render="@form"/>
 							</h:commandButton>
 						</div>
+					</div>
 				</h:form>
 				
 				<br />
